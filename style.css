@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+body{
+    background-color: #791f79;
+}
+.container{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    padding: 15px;
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4);
+}
+
+h1{
+    text-align: center;
+    font-size: 3rem;
+    text-transform: uppercase;
+    margin-top: 10px;
+    color: #fffffff5;
+    font-family: fantasy;
+    font-weight: lighter;
+}
