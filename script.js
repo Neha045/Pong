@@ -28,7 +28,7 @@ const ball ={
     speed:5,
     velocityX:5,
     velocityY:5,
-    color:"#d05de7"
+    color:"#fffd77"
 }
 
 //draw rectangle function
@@ -83,12 +83,19 @@ document.addEventListener("keydown", keyDownHandler);
 document.addEventListener("keyup", keyUpHandler);
 let user2Up = false;
 let user2Down = false;
+let user1Up = false;
+let user1Down = false;
 function keyDownHandler(e) {
     if(e.key == "Up" || e.key == "ArrowUp") {
         user2Up = true;
     }
     else if(e.key == "Down" || e.key == "ArrowDown") {
         user2Down = true;
+    }else if(e.key == "W" || e.key == "w") {
+        user1Up = true;
+    }
+    else if(e.key == "S" || e.key == "s") {
+        user1Down = true;
     }
 }
 
@@ -98,6 +105,11 @@ function keyUpHandler(e) {
     }
     else if(e.key == "Down" || e.key == "ArrowDown") {
         user2Down = false;
+    }else if(e.key == "W" || e.key == "w") {
+        user1Up = false;
+    }
+    else if(e.key == "S" || e.key == "s") {
+        user1Down = false;
     }
 }
 
@@ -130,6 +142,20 @@ function update(){
     ball.x += ball.velocityX;
     ball.y += ball.velocityY;
     
+    //user 1 controls
+    if(user1Up) {
+        user1.y -= 3;
+        if (user1.y < 0){
+            user1.y = 0;
+        }
+    }
+    else if(user1Down) {
+        user1.y +=3 ;
+        if (user1.y + user1.height > cvs.height){
+            user1.y = cvs.height - user1.height;
+        }
+    }
+
     //user 2 controls
     if(user2Up) {
         user2.y -= 3;
