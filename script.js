@@ -78,14 +78,28 @@ function render(){
     drawCircle(ball.x, ball.y, ball.radius, ball.color);
 }
 
-//control user paddle:
-cvs.addEventListener("mousemove", movePaddle);
-function movePaddle(event){
-    let rect = cvs.getBoundingClientRect();
-
-    user2.y = event.clientY - rect.top - user2.height/2;
+// control user paddles
+document.addEventListener("keydown", keyDownHandler);
+document.addEventListener("keyup", keyUpHandler);
+let user2Up = false;
+let user2Down = false;
+function keyDownHandler(e) {
+    if(e.key == "Up" || e.key == "ArrowUp") {
+        user2Up = true;
+    }
+    else if(e.key == "Down" || e.key == "ArrowDown") {
+        user2Down = true;
+    }
 }
 
+function keyUpHandler(e) {
+    if(e.key == "Up" || e.key == "ArrowUp") {
+        user2Up = false;
+    }
+    else if(e.key == "Down" || e.key == "ArrowDown") {
+        user2Down = false;
+    }
+}
 
 //collision detection
 function collision(b,p){
@@ -115,10 +129,20 @@ function resetBall(){
 function update(){
     ball.x += ball.velocityX;
     ball.y += ball.velocityY;
-
-    // control user1 AI
-    let level = 0.05;
-    user1.y += (ball.y -(user1.y + (user1.height/2))) * level;
+    
+    //user 2 controls
+    if(user2Up) {
+        user2.y -= 3;
+        if (user2.y < 0){
+            user2.y = 0;
+        }
+    }
+    else if(user2Down) {
+        user2.y +=3 ;
+        if (user2.y + user2.height > cvs.height){
+            user2.y = cvs.height - user2.height;
+        }
+    }
 
     if(ball.y + ball.radius > cvs.height || ball.y-ball.radius <0){
         ball.velocityY = - ball.velocityY;
