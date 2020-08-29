@@ -144,13 +144,13 @@ function update(){
     
     //user 1 controls
     if(user1Up) {
-        user1.y -= 3;
+        user1.y -= 4;
         if (user1.y < 0){
             user1.y = 0;
         }
     }
     else if(user1Down) {
-        user1.y +=3 ;
+        user1.y +=4 ;
         if (user1.y + user1.height > cvs.height){
             user1.y = cvs.height - user1.height;
         }
@@ -158,13 +158,13 @@ function update(){
 
     //user 2 controls
     if(user2Up) {
-        user2.y -= 3;
+        user2.y -= 4;
         if (user2.y < 0){
             user2.y = 0;
         }
     }
     else if(user2Down) {
-        user2.y +=3 ;
+        user2.y +=4 ;
         if (user2.y + user2.height > cvs.height){
             user2.y = cvs.height - user2.height;
         }
