@@ -1,2 +1,2 @@
 # Pong
-Multi player pong game.
+- Ping-pong multiplayer game.
